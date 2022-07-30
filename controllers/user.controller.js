@@ -9,7 +9,7 @@ controller.getAll = async (_req, res) => {
         res.send(users);
     }
     catch (e) {
-        console.log(`Error: ${e}`);
+        console.error(`Error: ${e}`);
         res.sendStatus(500);
     }
 }
@@ -20,7 +20,7 @@ controller.getByID = async (_req, res, id) => {
         res.send(user);
     }
     catch (e) {
-        console.log(`Error: ${e}`);
+        console.error(`Error: ${e}`);
         res.sendStatus(500);
     }
 }
@@ -32,7 +32,7 @@ controller.addUser = async (req, res) => {
         res.send(json(addedUser));
     }
     catch (e) {
-        console.log(`Error: ${e}`);
+        console.error(`Error: ${e}`);
         res.sendStatus(500);
     }
 }
@@ -44,7 +44,7 @@ controller.deleteUser = async (req, res) => {
         res.sendStatus(200);
     }
     catch (e) {
-        console.log(`Error: ${e}`);
+        console.error(`Error: ${e}`);
         res.sendStatus(500);
     }
 }
@@ -55,7 +55,7 @@ controller.getRooms = async (_req, res, id) => {
         res.send(user.rooms);
     }
     catch {
-        console.log(`Error: ${e}`);
+        console.error(`Error: ${e}`);
         res.sendStatus(500);
     }
 }

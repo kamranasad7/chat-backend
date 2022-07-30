@@ -10,6 +10,7 @@ import userRouter from './routes/user.route.js';
 import roomRouter from './routes/room.route.js';
 import connect from './db/connect.js'
 
+import socketHandler from './sockets/socketHandler.js'
 
 const PORT = process.env.port;
 
@@ -34,19 +35,4 @@ app.get('/', (req, res) => {
     res.send({name: 'lallu'});
 });
 
-io.on('connection', async (socket) => {
-    console.log('Connection established.')
-
-    const sendStatus = () => {
-        socket.emit('status', s)
-    }
-    //const chat = db.collection('chats')
-    //const msgs = await chat.find().limit(100).sort({_id: 1}).toArray()
-
-    //socket.emit(`msgs`, msgs);
-    
-
-    socket.on('input', data => {
-        console.log(data);
-    })
-});
+io.on('connection', socketHandler.clientConnected);
