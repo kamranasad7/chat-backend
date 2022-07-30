@@ -12,7 +12,7 @@ handler.clientConnected = async (socket) => {
         const userRooms = user.rooms;
 
         for (const room of userRooms) {
-            socket.join(room._id);
+            socket.join(room._id.toString());
         }
 
         socket.on('send_message', ({ message, roomId }) => {
