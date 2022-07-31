@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
     name: {type: String, required: true},
-    email: {type: String, required: true, unique: true},
+    username: {type: String, required: true, unique: true},
     rooms: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Room'

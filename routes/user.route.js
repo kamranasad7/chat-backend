@@ -3,8 +3,8 @@ import userController from '../controllers/user.controller.js'
 
 const userRouter = express.Router();
 
-userRouter.get('/', (_req, res) => {
-    res.send([{ _id: 1, name: 'asad' }, { _id: 2, name: 'newUser' }])
+userRouter.get('/', (req, res) => {
+    userController.getByUsername(req, res);
 });
 
 userRouter.get('/all', (req, res) => {

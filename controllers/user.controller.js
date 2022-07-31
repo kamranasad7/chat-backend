@@ -25,6 +25,17 @@ controller.getByID = async (_req, res, id) => {
     }
 }
 
+controller.getByUsername = async (req, res) => {
+    try {
+        const user = await User.find({username: req.params.username});
+        res.send(user);
+    }
+    catch (e) {
+        console.error(`Error: ${e}`);
+        res.sendStatus(500);
+    }
+}
+
 controller.addUser = async (req, res) => {
     let userToAdd = User(req.body);
     try {
