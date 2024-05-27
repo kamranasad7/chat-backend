@@ -16,8 +16,23 @@ handler.clientConnected = async (socket) => {
         }
 
         socket.on('send_message', ({ message, roomId }) => {
-            console.log(roomId, userId, message)
+            console.log('send_message', { userId, roomId, message});
             socket.to(`${roomId}`).emit('receive_message', { roomId, userId, message });
+        });
+
+        socket.on('send_point', ({ roomId, x, y }) => {
+            console.log('send_point', { userId, roomId, x, y });
+            socket.to(`${roomId}`).emit('receive_point', { roomId, userId, x, y });
+        });
+
+        socket.on('send_enter', ({ roomId }) => {
+            console.log('send_enter', { userId, roomId });
+            socket.to(`${roomId}`).emit('receive_enter', { roomId, userId });
+        });
+
+        socket.on('send_exit', ({ roomId }) => {
+            console.log('send_exit', { userId, roomId });
+            socket.to(`${roomId}`).emit('receive_exit', { roomId, userId });
         });
 
         socket.on('receive_message', ({ roomId, userId, message }) => {
